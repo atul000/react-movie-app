@@ -13,7 +13,6 @@ import MovieThumb from "../elements/MovieThumb/MovieThumb";
 import LoadMoreBtn from "../elements/LoadMoreBtn/LoadMoreBtn";
 import Spinner from "../elements/Spinner/Spinner";
 import "./Home.css";
-import { element } from "prop-types";
 
 class Home extends Component {
   state = {
