@@ -2,10 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Navigation.css";
 
-const Navigation = () => {
+const Navigation = props => {
   return (
-    <div>
-      <h1>Navigation</h1>
+    <div className="rmdb-navigation">
+      <div className="rmdb-navigation-content">
+        <Link to="/">
+          <p>Home</p>
+        </Link>
+        <p>/</p>
+        <p>{props.movie}</p>
+      </div>
     </div>
   );
 };

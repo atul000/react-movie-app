@@ -58,11 +58,34 @@ export default class Movie extends Component {
   render() {
     return (
       <div className="rmdb-movie">
-        <Navigation />
-        <MovieInfo />
-        <MovieInfoBar />
-        {/* <FourColdGrid /> */}
-        <Spinner />
+        {this.state.movie ? (
+          <div>
+            <Navigation movie={this.props.location.movieName} />
+            <MovieInfo
+              movie={this.state.movie}
+              directors={this.state.directors}
+            />
+            <MovieInfoBar
+              time={this.state.runtime}
+              budget={this.state.movie.budget}
+              revenue={this.state.movie.revenue}
+            />
+          </div>
+        ) : null}
+
+        {this.state.actors ? (
+          <div className="rmdb-movie-grid">
+            <FourColdGrid header={"Actors"}>
+              {this.state.actors.map((element, i) => {
+                return <Actor key={i} actor={element} />;
+              })}
+            </FourColdGrid>
+          </div>
+        ) : null}
+        {!this.state.actors && !this.state.loading ? (
+          <h1>Mo Movie Found</h1>
+        ) : null}
+        {this.state.loading ? <Spinner /> : null}
       </div>
     );
   }
